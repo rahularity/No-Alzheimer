@@ -5,7 +5,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.ithought.rahul.nozimers"
-        minSdkVersion 21
+        minSdkVersion 22
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -27,10 +27,11 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.google.firebase:firebase-database:11.8.0'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation("com.hypertrack:android:0.4.19:release@aar") {
+    implementation('com.hypertrack:android:0.4.19:release@aar') {
         transitive = true;
     }
     implementation files('libs/GenAsync.1.2.jar')
@@ -41,11 +42,21 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     testImplementation 'junit:junit:4.12'
-
     //circle image
     implementation 'de.hdodenhof:circleimageview:2.2.0'
-
     //api.ai
     implementation 'ai.api:sdk:2.0.7@aar'
     implementation 'ai.api:libai:1.6.12'
+
+    //face detection
+    implementation 'com.microsoft.projectoxford:face:1.4.3'
+    implementation files('libs/KairosSDK.jar')
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+
+    //Retrofit JSON
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

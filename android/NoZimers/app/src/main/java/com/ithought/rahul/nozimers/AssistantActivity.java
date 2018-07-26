@@ -28,9 +28,7 @@ public class AssistantActivity extends AppCompatActivity implements AIListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assistant);
 
-        assistance_question_text = (TextView)findViewById(R.id.assistance_question_text);
-        assistance_answer_text = (TextView)findViewById(R.id.assistance_answer_text);
-
+        init();
 
         int permission = ContextCompat.checkSelfPermission(this,
                 android.Manifest.permission.RECORD_AUDIO);
@@ -58,6 +56,11 @@ public class AssistantActivity extends AppCompatActivity implements AIListener{
         });
     }
 
+    private void init() {
+        assistance_question_text = (TextView)findViewById(R.id.assistance_question_text);
+        assistance_answer_text = (TextView)findViewById(R.id.assistance_answer_text);
+    }
+
     protected void makeRequest() {
         ActivityCompat.requestPermissions(this,
                 new String[]{android.Manifest.permission.RECORD_AUDIO},
@@ -65,18 +68,13 @@ public class AssistantActivity extends AppCompatActivity implements AIListener{
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case 101: {
 
-                if (grantResults.length == 0
-                        || grantResults[0] !=
-                        PackageManager.PERMISSION_GRANTED) {
-
+                if (grantResults.length == 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
 
                 } else {
-
                 }
                 return;
             }
@@ -86,7 +84,6 @@ public class AssistantActivity extends AppCompatActivity implements AIListener{
 
     @Override
     public void onResult(AIResponse result) {
-
         Log.d(TAG, "onResult: this is the result returned from dialogflow" + result.toString());
         Result result1 = result.getResult();
         assistance_question_text.setText(result1.getResolvedQuery());

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1088856514002",
+    "firebase_url": "https://noalzheimer-90ee4.firebaseio.com",
+    "project_id": "noalzheimer-90ee4",
+    "storage_bucket": "noalzheimer-90ee4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088856514002:android:9420b4dd745140a7",
+        "android_client_info": {
+          "package_name": "com.ithought.rahul.nozimers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088856514002-s48106qa2km77vriob0q460ceaqseqnl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ithought.rahul.nozimers",
+            "certificate_hash": "b0439295a5a05c1fe7693f28b52f2fa3aeb8f516"
+          }
+        },
+        {
+          "client_id": "1088856514002-f8ibm8juq8v52g0fpvlb8e121vsf18ec.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLRkoxcD8odlIVv9rh7_nOvWR7_Yg6Als"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088856514002-f8ibm8juq8v52g0fpvlb8e121vsf18ec.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

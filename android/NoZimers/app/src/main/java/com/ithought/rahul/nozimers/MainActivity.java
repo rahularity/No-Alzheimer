@@ -1,8 +1,10 @@
 package com.ithought.rahul.nozimers;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,18 +12,21 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
+import com.kairos.Kairos;
+import com.kairos.KairosListener;
+import com.microsoft.projectoxford.face.FaceServiceClient;
+import com.microsoft.projectoxford.face.FaceServiceRestClient;
 
-import com.hypertrack.lib.HyperTrack;
-import com.kosalgeek.genasync12.AsyncResponse;
-import com.kosalgeek.genasync12.PostResponseAsyncTask;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-
-import ai.api.AIListener;
-import ai.api.android.AIConfiguration;
-import ai.api.android.AIService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +37,17 @@ public class MainActivity extends AppCompatActivity {
     private String temp;
     private FloatingActionButton assist;
     private ByteArrayOutputStream bao;
+    private Kairos myKairos;
+    private KairosListener listener;
+    private static final String galleryId  = "MyGallery";
+    private ProgressDialog pd;
+
+
+//    private final String apiEndpoint = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+//    private final String subscriptionKey = "2ae64a7350a44a03bfbe07e03a13ce49";
+
+//    private final FaceServiceClient faceServiceClient =
+//            new FaceServiceRestClient(apiEndpoint, subscriptionKey);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +57,50 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: OnCreate running");
 
         init();
+
+        listener = new KairosListener() {
+            @Override
+            public void onSuccess(String response) {
+                // your code here!
+                Log.d("recognition", response);
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.has("Errors")){
+
+                        pd.setMessage("face not recognized");
+                        pd.dismiss();
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        byte[] byteArray = stream.toByteArray();
+                        Intent i = new Intent(MainActivity.this, AddPerson.class);
+                        i.putExtra("pic", byteArray);
+                        startActivity(i);
+
+                    }else if (object.has("images")){
+
+                        pd.setMessage("recognition complete.");
+                        pd.dismiss();
+                        Toast.makeText(MainActivity.this,"photo found", Toast.LENGTH_LONG).show();
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFail(String response) {
+                // your code here!
+                Log.d("KAIROS DEMO", response);
+            }
+        };
+
+        // instantiate a new kairos instance
+        myKairos = new Kairos();
+        // set authentication
+        String app_id = "21a46ffd";
+        String api_key = "aae746902a1c58b9e658e9f118fc7528";
+        myKairos.setAuthentication(this, app_id, api_key);
 
 
         assist.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +145,9 @@ public class MainActivity extends AppCompatActivity {
         assist = (FloatingActionButton)findViewById(R.id.assistant);
         peopleIKnow = (Button)findViewById(R.id.peopleIKnow);
         peopleAroundYou = (Button)findViewById(R.id.people_around_you);
+        pd = new ProgressDialog(this);
     }
+
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
@@ -97,43 +159,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void detectFace(Intent data) {
         photo = (Bitmap) data.getExtras().get("data");
-        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
-        photo.compress(Bitmap.CompressFormat.PNG,100, baos);
-        byte [] b=baos.toByteArray();
-        temp=Base64.encodeToString(b, Base64.DEFAULT);
+        pd.show();
+        pd.setMessage("please wait...");
+        pd.setCancelable(false);
 
-
-        String url = "http://192.168.4.152:5000/connect/";
-
-        //hashmap for storing image
-        HashMap postData = new HashMap();
-        postData.put("image", temp);
-
-
-
-        //network requests to send picture and detect pictures
-        PostResponseAsyncTask readTask = new PostResponseAsyncTask(MainActivity.this, postData, new AsyncResponse() {
-            @Override
-            public void processFinish(String s) {
-
-                //if picture doesn't match any face in the database then it will give error message
-                if (s.equals("error")){
-
-                    Intent i = new Intent(MainActivity.this,AddPerson.class);
-                    i.putExtra("pic",temp);
-                    startActivity(i);
-
-                }
-                //if picture matches the any face then receiveing the data as JSON
-                else{
-                    Intent intent = new Intent(MainActivity.this,Profile.class);
-                    intent.putExtra("profileDetails",s);
-                    startActivity(intent);
-                }
-
-            }
-        });
-        readTask.execute(url);
+        String galleryId1 = galleryId;
+        String selector = "FULL";
+        String threshold = "0.75";
+        String minHeadScale = "0.25";
+        String maxNumResults = "25";
+        try {
+            myKairos.recognize(photo,
+                    galleryId1,
+                    selector,
+                    threshold,
+                    minHeadScale,
+                    maxNumResults,
+                    listener);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
 }
