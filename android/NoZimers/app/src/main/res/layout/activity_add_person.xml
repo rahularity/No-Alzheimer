@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ithought.rahul.nozimers.AddPerson">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/rahul"
+                    android:layout_gravity="center"/>
+
+
+                <EditText
+                    android:id="@+id/name_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:padding="5dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:layout_margin="15dp"/>
+
+            <EditText
+                android:id="@+id/livesIn_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Lives In"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:layout_margin="15dp"/>
+
+            <EditText
+                android:id="@+id/age_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Age"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:layout_margin="15dp"/>
+
+            <EditText
+                android:id="@+id/placeOfMeeting_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Place Of Meeting"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:layout_margin="15dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:layout_margin="15dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:layout_margin="15dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:layout_margin="15dp"/>
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/profileLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/profilePicLayout"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            app:hintTextAppearance="@style/FloatingLabelStyle">
+
+            <EditText
+                android:id="@+id/Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="25"
+                android:hint="Time Of Meeting" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            app:hintTextAppearance="@style/FloatingLabelStyle">
+
+            <EditText
+                android:id="@+id/Relation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="25"
+                android:hint="Relation" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            app:hintTextAppearance="@style/FloatingLabelStyle">
+
+            <EditText
+                android:id="@+id/Notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="25"
+                android:hint="Notes" />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+
+
+</LinearLayout>
+
+    <Button
+        android:layout_margin="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit"
+        android:text="Submit"
+        android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
