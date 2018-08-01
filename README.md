@@ -1,4 +1,4 @@
-# Anti-Alzheimer
+# No-Alzheimer
 
 ## ALZHEIMER :
 Alzheimer&#39;s is a type of dementia that causes problems with memory, thinking and behavior. Symptoms usually develop slowly and get worse over time, becoming severe enough to interfere with daily tasks.
