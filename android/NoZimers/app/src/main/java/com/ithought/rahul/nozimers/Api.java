@@ -1,24 +1,42 @@
 package com.ithought.rahul.nozimers;
 
-import java.util.Map;
+import com.ithought.rahul.nozimers.models.AddingPeopleStatusObject;
+import com.ithought.rahul.nozimers.models.UserObject;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
-import retrofit2.http.Header;
-import retrofit2.http.HeaderMap;
-import retrofit2.http.Headers;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 public interface Api {
 
 
+    @GET("getall/")
+    Call<UserObject> getall();
 
-    @POST("recognize")
-    Call<ResponseBody> postRequest(
-            @HeaderMap Map<String, String> headers,
+    @FormUrlEncoded
+    @POST("add/")
+    Call<AddingPeopleStatusObject> add(
+
             @Field("image") String image,
-            @Field("gallery_name") String gallery_name
+            @Field("name") String name,
+            @Field("lives_in") String lives_in,
+            @Field("contact") String contact,
+            @Field("age") String age,
+            @Field("place_of_meeting") String place_of_meeting,
+            @Field("relation") String relation,
+            @Field("notes") String notes
+
     );
+
+    @FormUrlEncoded
+    @POST("compare/")
+    Call<UserObject> compare(
+            @Field("image") String image
+
+    );
+
+
 }

@@ -38,12 +38,10 @@ public class AddPerson extends AppCompatActivity {
     private ProgressDialog progress;
     private String temp;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_person);
-
 
         init();
 
@@ -59,15 +57,14 @@ public class AddPerson extends AppCompatActivity {
                 // your code here!
                 Log.d("KAIROS DEMO", response);
 
-
                 Toast.makeText(AddPerson.this,response,Toast.LENGTH_LONG).show();
                 
                 progress.dismiss();
                 Intent i = new Intent(AddPerson.this, MainActivity.class);
                 startActivity(i);
                 finish();
-
             }
+
 
             @Override
             public void onFail(String response) {
@@ -80,8 +77,8 @@ public class AddPerson extends AppCompatActivity {
         // instantiate a new kairos instance
         myKairos = new Kairos();
         // set authentication
-        String app_id = "21a46ffd";
-        String api_key = "aae746902a1c58b9e658e9f118fc7528";
+        String app_id = "56b9c638";
+        String api_key = "5a99824f93696cad8c89cce98709bca4";
         myKairos.setAuthentication(this, app_id, api_key);
 
 

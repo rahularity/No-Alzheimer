@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    public static final String BASE_URL = "https://api.kairos.com/";
+    public static final String BASE_URL = "http://18.215.250.153:8080/";
     private static RetrofitClient mInstance;
 
     private Retrofit retrofit;

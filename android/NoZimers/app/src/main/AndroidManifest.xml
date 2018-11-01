@@ -7,6 +7,13 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -25,9 +32,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Profile" />
         <activity android:name=".AddPerson" />
-        <activity android:name=".AssistantActivity"></activity>
+        <activity android:name=".AssistantActivity" />
+        <activity android:name=".PeopleAroundYou.PeopleAroudYouActivity" />
+        <activity android:name=".PeopleIKnow.PeopleIKnowActivity" />
+        <activity android:name=".AddANewFace.AddANewFaceActivity"></activity>
     </application>
 
 </manifest>

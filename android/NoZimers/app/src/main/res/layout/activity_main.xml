@@ -101,52 +101,53 @@
 
     </ScrollView>
 
-
-
-
-
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/assistant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_assistant"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="90dp"
-        android:layout_marginRight="20dp"
-        app:rippleColor="@color/gray"/>
-
-
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/people_around_you"
+            android:id="@+id/add_a_new_face"
             android:layout_marginBottom="0dp"
             android:background="@drawable/look"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:padding="20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Know People Around You"
+            android:text="ADD A NEW FACE"
             android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/peopleIKnow"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/look"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:padding="20dp"
-            android:layout_height="match_parent"
-            android:text="People I Know"
-            android:textStyle="bold"/>
+        <LinearLayout
+            android:id="@+id/buttonLL"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/people_around_you"
+                android:layout_margin="2dp"
+                android:background="@drawable/look"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Know People Around You"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/peopleIKnow"
+                android:layout_margin="2dp"
+                android:background="@drawable/look"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="People I Know"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
 
     </LinearLayout>
+
+
+
 
 
 </RelativeLayout>

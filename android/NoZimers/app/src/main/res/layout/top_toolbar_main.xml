@@ -9,7 +9,7 @@
 
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/profileToolbar"
+            android:id="@+id/main_activity_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/white_grey_border_bottom">
